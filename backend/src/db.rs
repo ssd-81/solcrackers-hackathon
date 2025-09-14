@@ -1,24 +1,12 @@
-// db.rs
+use sqlx::postgres::PgPoolOptions;
+use sqlx::PgPool;
+use std::env;
 
-use sqlx::{postgres::PgPoolOptions, PgPool};
-use std::time::Duration;
-use anyhow::Result;
-
-/// Create a connection pool to be shared across your application.
-///
-/// # Arguments
-///
-/// * `database_url` - A PostgreSQL database connection string.
-///
-/// # Returns
-///
-/// * `Result<PgPool, anyhow::Error>` - The connection pool if successful, or an error.
-pub async fn create_pool(database_url: &str) -> Result<PgPool> {
-    let pool = PgPoolOptions::new()
+pub async fn get_db_pool() -> PgPool {
+    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    PgPoolOptions::new()
         .max_connections(5)
-        .connect_timeout(Duration::from_secs(5))
-        .connect(database_url)
-        .await?;
-
-    Ok(pool)
+        .connect(&database_url)
+        .await
+        .expect("Failed to create pool")
 }

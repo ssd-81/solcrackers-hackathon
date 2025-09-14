@@ -2,16 +2,18 @@ use axum::Router;
 use std::net::SocketAddr;
 
 mod routes;
-mod handlers;
+mod db;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let app: Router = routes::router();
+    // Use the correct function name
+    let pool = db::get_db_pool().await;
+    
+    let app: Router = routes::router(pool);
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
-
-    // Use tokio + hyper directly
+    
     let listener = tokio::net::TcpListener::bind(&addr).await?;
-axum::serve(listener, app).await?;
-
+    axum::serve(listener, app).await?;
+    
     Ok(())
 }
