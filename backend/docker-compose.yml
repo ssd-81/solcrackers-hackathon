@@ -5,11 +5,11 @@ services:
     image: postgres:15
     restart: always
     environment:
-      POSTGRES_USER: test_user
-      POSTGRES_PASSWORD: test_pass
-      POSTGRES_DB: test_db
+      POSTGRES_USER: hackerman        # Change if you want
+      POSTGRES_PASSWORD: LimitedScope    # Change if you want  
+      POSTGRES_DB: oneearth          # Changed to match your DB name
     ports:
-      - "5433:5432"
+      - "5433:5432"                   # Note: port 5433 on host
     volumes:
       - db-data:/var/lib/postgresql/data
 
