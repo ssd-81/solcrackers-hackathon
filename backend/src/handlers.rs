@@ -1,5 +1,5 @@
 // src/handlers.rs
-use axum::{Json};
+use axum::Json;
 use serde_json::json;
 
 pub async fn ev_request() -> Json<serde_json::Value> {

@@ -3,11 +3,14 @@ pub mod booking;
 pub mod energy;
 pub mod plan;
 
-use axum::{routing::{get, post}, Router};
+use axum::{
+    Router,
+    routing::{get, post},
+};
 
 mod super_handlers {
     // re-export handlers from crate root handlers module
-    pub use crate::handlers::{ev_request, ev_requests, energy_status, charging_plan, analytics};
+    pub use crate::handlers::{analytics, charging_plan, energy_status, ev_request, ev_requests};
 }
 
 pub fn router() -> Router {
