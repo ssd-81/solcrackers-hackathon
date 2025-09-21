@@ -1,13 +1,25 @@
-use sqlx::{postgres::PgPoolOptions, PgPool};
+use sqlx::{PgPool, Pool, Postgres};
 use anyhow::Result;
 
-/// Create a connection pool to be shared across your application.
-pub async fn create_pool(database_url: &str) -> Result<PgPool> {
-    let pool = PgPoolOptions::new()
-        .max_connections(5)
-        .connect(database_url)
-        .await?;
+pub type DbPool = Pool<Postgres>;
 
+pub async fn create_pool(database_url: &str) -> Result<PgPool> {
+    println!("Connecting to database: {}", database_url);
+    
+    let pool = PgPool::connect(database_url).await?;
+    
+    println!("Database connection established");
+    
     Ok(pool)
 }
 
+pub async fn test_connection(pool: &DbPool) -> Result<()> {
+    let row: (i64,) = sqlx::query_as("SELECT $1")
+        .bind(150_i64)
+        .fetch_one(pool)
+        .await?;
+
+    println!("Database test query successful: {}", row.0);
+    
+    Ok(())
+}

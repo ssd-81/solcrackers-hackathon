@@ -1,10 +1,9 @@
 use serde::{Deserialize, Serialize};
-use chrono::{DateTime, Utc};
 use sqlx::FromRow;
 use chrono::{Utc, DateTime};
 
-
-#[derive(Debug,Clone)]
+// #[derive(serde::Deserialize)]
+#[derive(Debug,Clone,Deserialize)]
 pub struct EVpayload{
   pub ev_id:String,
   pub arrival_time:String,
