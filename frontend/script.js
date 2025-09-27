@@ -1,17 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-<<<<<<< HEAD
     const bookingForm = document.getElementById('booking-form');
     const bookingsContainer = document.getElementById('bookings-container');
     const toggleFormButton = document.querySelector('.play-button');
 
-=======
-
-    const bookingForm = document.getElementById('booking-form');
-    const bookingsContainer = document.getElementById('bookings-container');
-    const toggleFormButton = document.querySelector('.play-button');
-
->>>>>>> frontconfg
     if (bookingForm) {
         const messageDiv = document.getElementById('form-message');
 
@@ -61,12 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-<<<<<<< HEAD
 
   //LOGIC FOR DATA.HTML 
-=======
-//data retriver
->>>>>>> frontconfg
     if (bookingsContainer) {
         async function fetchAndDisplayBookings() {
             try {
@@ -83,10 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-<<<<<<< HEAD
-=======
-                // Create and append a styled div for each booking
->>>>>>> frontconfg
                 bookings.forEach(booking => {
                     const bookingElement = document.createElement('div');
                     bookingElement.className = 'booking-item';
@@ -106,10 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-<<<<<<< HEAD
-=======
-        // Fetch bookings
->>>>>>> frontconfg
         fetchAndDisplayBookings();
     }
 });

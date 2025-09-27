@@ -55,14 +55,8 @@ a {
     overflow-y: auto;
 }
 
-<<<<<<< HEAD
 .booking-form {
     display: none; 
-=======
-/* --- Form Styles --- */
-.booking-form {
-    display: none; /* Hidden by default, JS will show it */
->>>>>>> frontconfg
     background: #fff;
     flex-direction: column;
     padding: 2rem 2.5rem;
@@ -121,21 +115,13 @@ a {
     background: var(--primary-gradient-hover);
 }
 
-<<<<<<< HEAD
-=======
-/* --- Form Message Styles --- */
->>>>>>> frontconfg
 #form-message {
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 8px;
     text-align: center;
     font-weight: 600;
-<<<<<<< HEAD
     display: none; 
-=======
-    display: none; /* Hidden by default */
->>>>>>> frontconfg
 }
 #form-message.success {
     background-color: #e9f7ea;
@@ -149,10 +135,6 @@ a {
 }
 
 
-<<<<<<< HEAD
-=======
-/* --- Data Display Styles --- */
->>>>>>> frontconfg
 .bookings-container {
     color: #fff;
 }
@@ -171,10 +153,6 @@ a {
 }
 
 
-<<<<<<< HEAD
-=======
-/* --- HUD and Controls (Header/Footer) --- */
->>>>>>> frontconfg
 .hud, .controls {
     position: fixed;
     left: 0;
