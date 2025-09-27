@@ -1,5 +1,6 @@
 use axum::Router;
 use std::net::SocketAddr;
+
 mod db;
 mod handlers;
 mod routes;
@@ -14,11 +15,12 @@ pub struct AppState {
 }
 
 use std::sync::Arc;
+    use tower_http::cors::{CorsLayer, Any};
+
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     // Initialize logger
-    env_logger::init();
 
     // load DATABASE_URL (from env or .env)
     dotenv().ok();
@@ -53,6 +55,5 @@ async fn main() -> anyhow::Result<()> {
     // Use tokio + hyper directly
     let listener = tokio::net::TcpListener::bind(&addr).await?;
     axum::serve(listener, app).await?;
-
     Ok(())
 }
