@@ -1,99 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Form</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bookings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <header class="hud">
-    <nav class="hud-left">
-      <a href="#" class="play-button">🔍 SEARCH</a>
-      <a href="#">TOUR 2025</a>
-      <a href="#">SHOP</a>
-      <a href="#">ABOUT US</a>
-    </nav>
+    <header class="hud">
+        <nav class="hud-left">
+            <a href="./index.html" class="play-button">🏠 CREATE NEW</a>
+            <a href="#">TOUR 2025</a>
+            <a href="#">SHOP</a>
+            <a href="#">ABOUT US</a>
+        </nav>
+        <div class="hud-center">
+            <h1 class="logo">ALL<br><span>BOOKINGS</span></h1>
+        </div>
+        <div class="hud-right">
+            <div class="now-playing">
+                <span>NOW PLAYING: YAME - BIZARRE (INSTRUMENTAL)</span>
+                <div class="progress-bar">ON [ ▬▬▬ ] OFF</div>
+            </div>
+        </div>
+    </header>
 
-    <div class="hud-center">
-      <h1 class="logo">WELCOME<br><span>HOME</span></h1>
-    </div>
+    <main class="data-view">
+        <div class="bookings-container" id="bookings-container">
+            <p>Loading bookings...</p>
+        </div>
+    </main>
 
-    <div class="hud-right">
-      <div class="now-playing">
-        <span>NOW PLAYING: YAME - BIZARRE (INSTRUMENTAL)</span>
-        <div class="progress-bar">ON [ ▬▬▬ ] OFF</div>
-      </div>
-      <div id="hud-icons">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 15H9V19H5V15ZM15 5H19V9H15V5ZM5 5H9V9H5V5ZM15 15H19V19H15V15Z"
-            stroke="white" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </div>
-    </div>
-  </header>
-  <main class="data_visible">
-    <h1>FETCHED BOOKINGS</h1>
-    <pre id="bookings-container">Loading...</pre>
-</main>
+    <footer class="controls">
+        <div class="controls-left">
+            <span>All rights reserved.</span>
+            <a href="#">Terms of use</a>
+        </div>
+        <div class="controls-center">
+            <div class="scroll-prompt">
+                <span>SCROLL TO VIEW ALL</span>
+            </div>
+        </div>
+        <div class="controls-right">
+            <a href="#" class="cta-link">JOIN THE MOLAZONE ›</a>
+        </div>
+    </footer>
 
-<script>
-async function fetchBookings() {
-    try {
-        const response = await fetch("http://localhost:3000/api/bookings");
-        if (!response.ok) throw new Error("Failed to fetch bookings");
-
-        const bookings = await response.json();
-
-        const container = document.getElementById("bookings-container");
-        container.textContent = JSON.stringify(bookings, null, 2);
-    } catch (err) {
-        console.error(err);
-        document.getElementById("bookings-container").textContent = "Error fetching bookings.";
-    }
-}
-
-// Fetch bookings on page load
-fetchBookings();
-</script>
-  <footer class="controls">
-    <div class="controls-left">
-      <span>All rights reserved.</span>
-      <a href="#">Terms of use</a>
-      <a href="#">Privacy policy</a>
-      <a href="#">Credits</a>
-    </div>
-
-    <div class="controls-center">
-      <div class="scroll-prompt">
-        <span class="arrow">⟩⟩</span>
-        <span>CLICK TO EXPLORE</span>
-        <span class="arrow">⟨⟨</span>
-      </div>
-    </div>
-
-    <div class="controls-right">
-      <a href="#" class="cta-link">JOIN THE MOLAZONE ›</a>
-      <div class="social-icons">
-        <span>📷</span>
-        <span>🎵</span>
-      </div>
-      <div class="lang-switcher">
-        <a href="#" class="active">EN</a> | <a href="#">FR</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
-
 </html>
