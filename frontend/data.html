@@ -42,9 +42,29 @@
     </div>
   </header>
   <main class="data_visible">
-    <h1>FETCHED DATA</h1>
+    <h1>FETCHED BOOKINGS</h1>
+    <pre id="bookings-container">Loading...</pre>
+</main>
 
-  </main>
+<script>
+async function fetchBookings() {
+    try {
+        const response = await fetch("http://localhost:3000/api/bookings");
+        if (!response.ok) throw new Error("Failed to fetch bookings");
+
+        const bookings = await response.json();
+
+        const container = document.getElementById("bookings-container");
+        container.textContent = JSON.stringify(bookings, null, 2);
+    } catch (err) {
+        console.error(err);
+        document.getElementById("bookings-container").textContent = "Error fetching bookings.";
+    }
+}
+
+// Fetch bookings on page load
+fetchBookings();
+</script>
   <footer class="controls">
     <div class="controls-left">
       <span>All rights reserved.</span>
